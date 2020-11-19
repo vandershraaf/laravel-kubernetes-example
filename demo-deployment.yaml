@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-deployment
+  labels:
+    app: demo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+        - name: demo
+          # Set image property to the Docker image name built previously
+          image: ashraf/kube-laravel-example-4
+          ports:
+            - containerPort: 80
+          env:
+            - name : APP_KEY
+              value : base64:cUPmwHx4LXa4Z25HhzFiWCf7TlQmSqnt98pnuiHmzgY=
+          # If you want to use local Docker image, set IfNotPresent to imagePullPolicy
+          imagePullPolicy: IfNotPresent
