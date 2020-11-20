@@ -25,3 +25,17 @@ spec:
               value : base64:cUPmwHx4LXa4Z25HhzFiWCf7TlQmSqnt98pnuiHmzgY=
           # If you want to use local Docker image, set IfNotPresent to imagePullPolicy
           imagePullPolicy: IfNotPresent
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-service
+spec:
+  selector:
+    app: demo
+  ports:
+    - port: 80
+  # For AKS deployment, use LoadBalancer type
+  type: LoadBalancer
