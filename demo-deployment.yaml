@@ -17,7 +17,8 @@ spec:
       containers:
         - name: demo
           # Set image property to the Docker image name built previously
-          image: ashraf/kube-laravel-example-4
+          # If image is already pushed to Azure Container Registry, set the full image name and tag
+          image: ashrafkubedemo.azurecr.io/kubedemo:v1
           ports:
             - containerPort: 80
           env:
